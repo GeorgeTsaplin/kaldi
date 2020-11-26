@@ -1,6 +1,6 @@
 
 FROM debian:9.8
-LABEL maintainer="mdoulaty@gmail.com"
+LABEL maintainer="george152@mail.ru"
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -27,7 +27,7 @@ RUN apt-get update && \
 
 RUN ln -s /usr/bin/python2.7 /usr/bin/python
 
-RUN git clone --depth 1 https://github.com/kaldi-asr/kaldi.git /opt/kaldi && \
+RUN git clone -b lookahead --single-branch https://github.com/GeorgeTsaplin/kaldi /opt/kaldi && \
     cd /opt/kaldi/tools && \
     ./extras/install_mkl.sh && \
     make -j $(nproc) && \
